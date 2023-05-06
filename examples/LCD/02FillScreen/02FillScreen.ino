@@ -8,10 +8,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  display.fillScreen(TFT_RED)
+  display.fillScreen(TFT_RED);
   delay(1000);
-  display.fillScreen(TFT_GREEN)
+  display.fillScreen(TFT_GREEN);
   delay(1000);
-  display.fillScreen(TFT_BLUE)
+  display.fillScreen(TFT_BLUE);
   delay(1000);
 }
