@@ -1,1 +1,2 @@
-# Easy 3in1
+# EasyKid3In1
+

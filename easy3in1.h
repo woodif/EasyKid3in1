@@ -1,6 +1,3 @@
-#ifndef EASY3IN1_h
-#define EASY3IN1_h
-
 #include <Arduino.h>
 #include <Wire.h>
 #include <Adafruit_NeoPixel.h>
@@ -21,10 +18,43 @@
 // ------ Switch ------
 #define sw 0
 
+//////////////////////////////////////////////////////////////////////
+
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel strip2(LED_COUNT2, LED_PIN2, NEO_GRB + NEO_KHZ800);
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 TFT_eSPI tft = TFT_eSPI();
+
+/////////////////////////////////////////////////////////////////////
+/*
+RGB Board
+#setup	
+•	rgbBoard.setup();
+#function
+•	rgbBoard(color);
+•	rgbBoard.setBrightness(0-255)
+•	rgbFillBoard(color() , (r,g,b))
+•	rgbBoard.setPixelColor(rgb_num, color() or (r,g,b)) 
+•	rgbBoard.setPixelColor(rgb_num, color() or (r,g,b))
+•	rgbBoard.rainbow(time)
+•	rgbBoard.theaterChaseRainbow(time)
+•	rgbBoard.theaterChase(color() or (r,g,b), time)
+•	rgbBoard.colorWipe(color() or (r,g,b), time)
+	
+RGB Car
+#setup
+•	rgbCar.setup();
+#function
+•	rgbCar(color);
+•	rgbCar.setBrightness(0-255)
+•	rgbFillCar(color() , (r,g,b))
+•	rgbCar.setPixelColor(rgb_num, color() or (r,g,b)) 
+•	rgbCar.setPixelColor(rgb_num, color() or (r,g,b))
+•	rgbCar.rainbow(time)
+•	rgbCar.theaterChaseRainbow(time)
+•	rgbCar.theaterChase(color() or (r,g,b), time)
+•	rgbCar.colorWipe(color() or (r,g,b), time)
+*/
 
 void rainbow(int wait) {
   for (long firstPixelHue = 0; firstPixelHue < 5 * 65536; firstPixelHue += 256) {
@@ -66,25 +96,8 @@ void RainBow2(void * parameter) {
  // }
   vTaskDelete( NULL );
 }
-
-class KB_32FT
-{
-public:
-    void begin(void);
-    uint16_t readTempSTM1();
-    uint16_t readTempSTM2();
-    uint16_t readTempSTM3();
-
-protected:
-
-private:
-    uint16_t tempSTM;
-    uint16_t tmp = 0;
-    uint16_t tmp1 = 0;
-    uint16_t tmp2 = 0;
-};
-
-void Easy3in1(){
+///////////////////////////////////////////////////////////////////////////////////
+void Easy3in1_Setup(){
   Serial.begin(115200);
 //   RemoteXY_Init ();
 //   tft.begin ();                                 // initialize a ST7789 chip
@@ -101,6 +114,14 @@ void Easy3in1(){
   pinMode(sw, INPUT);
   pwm.begin();
   pwm.setPWMFreq(50);
+  pwm.setPWM(0, 0, 0);
+  pwm.setPWM(1, 0, 0);
+  pwm.setPWM(2, 0, 0);
+  pwm.setPWM(3, 0, 0);
+  pwm.setPWM(4, 0, 0);
+  pwm.setPWM(5, 0, 0);
+  pwm.setPWM(6, 0, 0);
+  pwm.setPWM(7, 0, 0);
   delay(10);
 //   gripperSetup();
 
@@ -120,7 +141,7 @@ void Easy3in1(){
     NULL);            /* Task handle. */
 
 }
-
+///////////////////////////////////////////////////////////////////////////////////////
 
 void motor(int num, int speedM) {
   if (speedM > 0) {
@@ -390,7 +411,3 @@ void ultrasonic() {
   //  Serial.print("cm");
   //  Serial.println();
 }
-
-
-
-#endif /*  */
