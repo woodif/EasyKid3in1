@@ -8,15 +8,15 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  motor(1,50);
-  motor(2,50);
-  motor(3,50);
-  motor(4,50);
+  motor(1,100);
+  motor(2,100);
+  motor(3,100);
+  motor(4,100);
   delay(2000);
-  motor(1,-50);
-  motor(2,-50);
-  motor(3,-50);
-  motor(4,-50);
+  motor(1,-100);
+  motor(2,-100);
+  motor(3,-100);
+  motor(4,-100);
   delay(2000);
   motorStopAll();
   delay(1000);
